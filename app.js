@@ -1,7 +1,7 @@
 const textAreas =
 	document.querySelectorAll('textarea');
 
-const submitBtn = document.querySelector(
+const formSubmitBtn = document.querySelector(
 	'#camp-activities-inquiry button'
 );
 
@@ -19,46 +19,70 @@ form.addEventListener('submit', (e) =>
 	e.preventDefault()
 );
 
-submitBtn.setAttribute('disabled', true);
+formSubmitBtn.setAttribute('disabled', true);
+
+
+const addFormSubmitBtnStyles = ()=>{
+    formSubmitBtn.style.cursor = 'pointer';
+    formSubmitBtn.style.border = '2px solid rgb(87, 80, 187)';
+    formSubmitBtn.style.color = 'rgb(87, 80, 187)';
+    formSubmitBtn.style.backgroundColor = 'transparent';
+}
+
+const handleMouseOver = ()=>{
+    formSubmitBtn.style.filter = 'brightness(1.3)';
+    formSubmitBtn.style.color = 'aliceblue';
+    formSubmitBtn.style.backgroundColor = 'rgb(87, 80, 187)'; 
+}
+
+const handleMouseOut = ()=>{
+    formSubmitBtn.style.filter = 'none';
+    formSubmitBtn.style.color = 'rgb(87, 80, 187)';
+    formSubmitBtn.style.backgroundColor = 'transparent';
+}
+
 
 activitySelect.addEventListener('change', (e) => {
 	if (e.target.value !== '') {
-		submitBtn.removeAttribute('disabled');
+		formSubmitBtn.removeAttribute('disabled');
 
-		// Hover styles
-		submitBtn.addEventListener(
+        addFormSubmitBtnStyles()
+
+		formSubmitBtn.addEventListener(
+			'mouseout',handleMouseOut
+		);
+		formSubmitBtn.addEventListener(
 			'mouseover',
-			function () {
-				this.style.transition =
-					'background-color 0.5s ease, filter 0.5s ease';
-				this.style.filter = 'brightness(1.3)';
-				this.style.color = 'aliceblue';
-				this.style.backgroundColor =
-					'rgb(87, 80, 187)';
-			}
+			handleMouseOver
 		);
 
-		submitBtn.addEventListener(
-			'mouseout',
-			function () {
-				this.style.transition =
-					'background-color 0.5s ease, filter 0.5s ease';
-				this.style.filter = 'none';
-				this.style.color = 'rgb(87, 80, 187)';
-				this.style.backgroundColor =
-					'transparent';
-			}
-		);
-
-		textAreas[0].style.display = 'flex';
-		textAreas[1].style.display = 'flex';
-
-		textAreas[0].style.opacity = '1';
-		textAreas[1].style.opacity = '1';
+        textAreas.forEach(textArea => {
+            textArea.style.display = 'flex';
+            textArea.style.opacity = '1';
+        })
 
 		textAreaLabels[0].style.display = 'flex';
 		textAreaLabels[1].style.display = 'flex';
+
+        positionWordCountDisplay()
 	}
+
+    else{
+        formSubmitBtn.setAttribute('disabled', true);
+        formSubmitBtn.removeEventListener('mouseover',handleMouseOver);
+        formSubmitBtn.removeEventListener('mouseout',handleMouseOut);
+        formSubmitBtn.removeAttribute('style');
+
+        textAreas.forEach(textArea => {
+            textArea.style.display = 'none';
+            textArea.style.opacity = '0';
+        })
+
+		textAreaLabels[0].style.display = 'none';
+		textAreaLabels[1].style.display = 'none';
+
+        positionWordCountDisplay()
+    }
 });
 
 let numWords = [0, 0];
@@ -70,14 +94,8 @@ textAreas.forEach((textArea, index) => {
 		'.word-count-display'
 	)[index];
 
-	console.log(
-		'wordCountDisplay',
-		wordCountDisplay
-	);
-
 	// Create the word count display element if it doesn't exist
 	if (!wordCountDisplay) {
-		console.log('purnota');
 		wordCountDisplay =
 			document.createElement('div');
 		const textareaRect =
@@ -108,8 +126,6 @@ const countWords = (event, index) => {
 	const text = event.target.value.trim();
 
 	numWords[index] = text.split(/\s+/).length;
-
-	console.log(numWords[index]);
 
 	wordCountDisplay = document.querySelectorAll(
 		'.word-count-display'
