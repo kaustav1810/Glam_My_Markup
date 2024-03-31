@@ -1,0 +1,132 @@
+
+body{
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    letter-spacing: 1px;
+    font-family: "Open Sans",sans-serif;
+}
+
+#camp-activities-inquiry{
+    box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.2);
+    padding: 1rem 1.5rem;
+}
+
+#camp-activities-inquiry h1{
+    margin-bottom: 2rem;
+    margin: 0 auto 1rem auto;
+    font-size: 2rem;
+    color: rgb(87, 80, 187);
+}
+
+#camp-activities-inquiry button{
+    border-radius: 10rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    width: 30%;
+    align-self: flex-end;
+    /* cursor: pointer;
+    border: 2px solid rgb(87, 80, 187);
+    color:  rgb(87, 80, 187);
+    background-color: transparent; */
+}
+
+#camp-activities-inquiry button:not(:disabled){
+    cursor: pointer;
+    border: 2px solid rgb(87, 80, 187);
+    color:  rgb(87, 80, 187);
+    background-color: transparent;
+}
+
+/* #camp-activities-inquiry button:hover{
+    transition: background-color 0.5s ease ,  filter 0.5s ease;
+    filter: brightness(1.3);
+    color: aliceblue;
+    background-color: rgb(87, 80, 187);
+} */
+
+#camp-activities-inquiry form label{
+    font-size: 0.9rem;
+    letter-spacing: 0;
+}
+
+
+
+#camp-activities-inquiry form{
+    margin: 0 auto;
+}
+
+
+#camp-activities-inquiry form,body{
+    display: flex;
+    flex-direction: column;
+}
+
+
+#camp-activities-inquiry select,textarea{
+    margin: 0.5rem 0 1rem 0;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+/* #camp-activities-inquiry textarea{
+    opacity: 0;
+    display: none;
+    transition: opacity 5s ease;
+} */
+
+/* #camp-activities-inquiry label:not(:nth-child(1)){
+    display: none;
+} */
+
+#camp-activities-inquiry select,textarea:focus{
+    outline-color: rgb(87, 80, 187);
+}
+
+#camp-activities-inquiry select::-ms-expand {
+    display: none;
+}
+
+#camp-activities-inquiry select{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: rgb(87, 80, 187);
+    font-weight: 600;
+
+}
+
+.word-count-display{
+    font-size: 10px;
+    color: #8a8585;
+    font-weight: 400;
+}
+
+.select::after {
+    content: "";
+    width: 0.8em;
+    height: 0.5em;
+    background-color: rgb(87, 80, 187);
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  }
+
+  .select{
+    display: grid;
+    grid-template-areas: "select";
+    align-items: center;
+  }
+
+  select,
+  .select:after {
+    grid-area: select;
+  }
+
+  .select::after{
+    justify-self: end;
+  }

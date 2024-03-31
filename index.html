@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camp Activities Inquiry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./app.css">
+</head>
+<body>
+    <section id="camp-activities-inquiry">
+        <h1>Camp Activities Inquiry</h1>
+        <form action="/submit-form" method="POST">
+            <label for="activity-select">Which camp activities are you most looking forward to?</label>
+            <div class="select">
+            <select id="activity-select" name="activity">
+                <option value="">--Please choose an option--</option>
+                <option value="hiking">Hiking</option>
+                <option value="canoeing">Canoeing</option>
+                <option value="fishing">Fishing</option>
+                <option value="crafts">Crafts</option>
+                <option value="archery">Archery</option>
+            </select>
+        </div>
+            <label for="food-allergies">Food Allergies (if any)</label>
+            <textarea id="food-allergies" name="food_allergies" rows="4" cols="50"></textarea>
+    
+            <label for="additional-info">Additional things the counselor should know</label>
+            <textarea id="additional-info" name="additional_info" rows="4" cols="50"></textarea>
+    
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+    <script src="./app.js"></script>
+</body>
+</html>
