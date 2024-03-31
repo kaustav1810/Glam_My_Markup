@@ -117,15 +117,15 @@ textAreas.forEach((textArea, index) => {
 		);
 	}
 
-	textArea.addEventListener('keypress', (e) =>
+	textArea.addEventListener('input', (e) =>{
 		countWords(e, index)
-	);
+    });
 });
 
 const countWords = (event, index) => {
 	const text = event.target.value.trim();
 
-	numWords[index] = text.split(/\s+/).length;
+	numWords[index] = event.target.value==""?0:text.split(/\s+/).length;
 
 	wordCountDisplay = document.querySelectorAll(
 		'.word-count-display'
